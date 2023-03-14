@@ -55,7 +55,7 @@ export class UserBusiness{
     }
 
     public async signUp(input: SignUpDTO){
-        const {username,email,password} = input
+        const {name,email,password} = input
 
         const id = this.idGenerator.generate()
 
@@ -69,7 +69,7 @@ export class UserBusiness{
             throw new BadRequestError("'E-mail' já cadastrado em outra conta.")
         }
 
-        if(typeof username !== "string"){
+        if(typeof name !== "string"){
             throw new BadRequestError("'Name' precisa ser uma string.")
         }
 
@@ -127,7 +127,6 @@ export class UserBusiness{
             throw new NotFoundError("'E-mail' não cadastrado!")
         }
 
-        // 
         const passwordHash = await this.hashManager.compare(password, searchUserByLogin.password)
 
         if(!passwordHash){

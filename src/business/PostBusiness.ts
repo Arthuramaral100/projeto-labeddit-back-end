@@ -221,7 +221,6 @@ export class PostBusiness {
         const likes = 0
         const dislikes = 0
         const creator_id = payload.id
-        // const commentsUpdate: filterPostById.comments
 
         if (content !== undefined){
             if(typeof content !== "string"){
